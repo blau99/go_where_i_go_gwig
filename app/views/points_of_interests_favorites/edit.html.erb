@@ -24,7 +24,7 @@
           Points of interest
         </label>
 
-        <input type="text" id="points_of_interest_id" name="points_of_interest_id" placeholder="Points of interest" class="form-control" value="<%= @points_of_interests_favorite.points_of_interest_id %>">
+        <%= select_tag(:points_of_interest_id, options_from_collection_for_select(PointsOfInterest.all, :id, :name, @points_of_interests_favorite.points_of_interest_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
