@@ -1,4 +1,14 @@
 class RestaurantPhotosController < ApplicationController
+  before_action :current_user_must_be_restaurant_photo_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_restaurant_photo_user
+    restaurant_photo = RestaurantPhoto.find(params[:id])
+
+    unless current_user == restaurant_photo.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @restaurant_photos = RestaurantPhoto.all
 
