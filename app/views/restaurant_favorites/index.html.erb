@@ -17,7 +17,7 @@
       <% @restaurant_favorites.each do |restaurant_favorite| %>
       <tr>
         <td><%= restaurant_favorite.restaurant.name %></td>
-        <td><%= restaurant_favorite.user_id %></td>
+        <td><%= restaurant_favorite.user.email %></td>
         <td>
           <a href="/restaurant_favorites/<%= restaurant_favorite.id %>" class="btn btn-primary">Show</a>
           <a href="/restaurant_favorites/<%= restaurant_favorite.id %>/edit" class="btn btn-warning">Edit</a>
