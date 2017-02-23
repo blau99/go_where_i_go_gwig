@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "friend_requests#index"
   # Routes for the Points_of_interests_favorite resource:
   # CREATE
   get "/points_of_interests_favorites/new", :controller => "points_of_interests_favorites", :action => "new"
