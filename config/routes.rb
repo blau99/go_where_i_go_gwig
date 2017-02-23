@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Restaurant_favorite resource:
+  # CREATE
+  get "/restaurant_favorites/new", :controller => "restaurant_favorites", :action => "new"
+  post "/create_restaurant_favorite", :controller => "restaurant_favorites", :action => "create"
+
+  # READ
+  get "/restaurant_favorites", :controller => "restaurant_favorites", :action => "index"
+  get "/restaurant_favorites/:id", :controller => "restaurant_favorites", :action => "show"
+
+  # UPDATE
+  get "/restaurant_favorites/:id/edit", :controller => "restaurant_favorites", :action => "edit"
+  post "/update_restaurant_favorite/:id", :controller => "restaurant_favorites", :action => "update"
+
+  # DELETE
+  get "/delete_restaurant_favorite/:id", :controller => "restaurant_favorites", :action => "destroy"
+  #------------------------------
+
   # Routes for the Best_dish resource:
   # CREATE
   get "/best_dishes/new", :controller => "best_dishes", :action => "new"
