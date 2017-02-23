@@ -17,12 +17,14 @@
       <a href="/restaurant_favorites" class="btn btn-primary">
         Back
       </a>
-      <a href="/restaurant_favorites/<%= @restaurant_favorite.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_restaurant_favorite/<%= @restaurant_favorite.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @restaurant_favorite.user %>
+        <a href="/restaurant_favorites/<%= @restaurant_favorite.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_restaurant_favorite/<%= @restaurant_favorite.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>

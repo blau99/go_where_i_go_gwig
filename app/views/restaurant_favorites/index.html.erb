@@ -20,8 +20,11 @@
         <td><%= restaurant_favorite.user.email %></td>
         <td>
           <a href="/restaurant_favorites/<%= restaurant_favorite.id %>" class="btn btn-primary">Show</a>
-          <a href="/restaurant_favorites/<%= restaurant_favorite.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_restaurant_favorite/<%= restaurant_favorite.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == restaurant_favorite.user %>
+            <a href="/restaurant_favorites/<%= restaurant_favorite.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_restaurant_favorite/<%= restaurant_favorite.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
