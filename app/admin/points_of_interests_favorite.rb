@@ -1,5 +1,7 @@
 ActiveAdmin.register PointsOfInterestsFavorite do
 
+ permit_params :points_of_interest_id, :user_id
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
