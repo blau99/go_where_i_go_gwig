@@ -35,3 +35,65 @@
     </div>
   </div>
 </div>
+
+<!-- A Accommodation has many accomodation_photos -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Accomodation Photos
+      </li>
+
+      <% @accommodation.accomodation_photos.each do |accomodation_photo| %>
+        <li class="list-group-item">
+          <a href="/accomodation_photos/<%= accomodation_photo.id %>">
+            <%= accomodation_photo.accommodation_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/accomodation_photos/<%= accomodation_photo.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/accomodation_photos/<%= accomodation_photo.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_accomodation_photo/<%= accomodation_photo.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Accommodation has many accommodation_favorites -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Accommodation Favorites
+      </li>
+
+      <% @accommodation.accommodation_favorites.each do |accommodation_favorite| %>
+        <li class="list-group-item">
+          <a href="/accommodation_favorites/<%= accommodation_favorite.id %>">
+            <%= accommodation_favorite.accommodation_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/accommodation_favorites/<%= accommodation_favorite.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/accommodation_favorites/<%= accommodation_favorite.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_accommodation_favorite/<%= accommodation_favorite.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

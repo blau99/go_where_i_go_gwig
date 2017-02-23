@@ -35,3 +35,65 @@
     </div>
   </div>
 </div>
+
+<!-- A Points of interest has many points_of_interests_photos -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Points Of Interests Photos
+      </li>
+
+      <% @points_of_interest.points_of_interests_photos.each do |points_of_interests_photo| %>
+        <li class="list-group-item">
+          <a href="/points_of_interests_photos/<%= points_of_interests_photo.id %>">
+            <%= points_of_interests_photo.points_of_interest_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/points_of_interests_photos/<%= points_of_interests_photo.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/points_of_interests_photos/<%= points_of_interests_photo.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_points_of_interests_photo/<%= points_of_interests_photo.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Points of interest has many points_of_interests_favorites -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Points Of Interests Favorites
+      </li>
+
+      <% @points_of_interest.points_of_interests_favorites.each do |points_of_interests_favorite| %>
+        <li class="list-group-item">
+          <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>">
+            <%= points_of_interests_favorite.points_of_interest_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_points_of_interests_favorite/<%= points_of_interests_favorite.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
