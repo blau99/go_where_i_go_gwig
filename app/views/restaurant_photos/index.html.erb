@@ -18,7 +18,7 @@
       <% @restaurant_photos.each do |restaurant_photo| %>
       <tr>
         <td><%= restaurant_photo.restaurant.name %></td>
-        <td><%= restaurant_photo.user_id %></td>
+        <td><%= restaurant_photo.user.email %></td>
         <td><%= restaurant_photo.caption %></td>
         <td>
           <a href="/restaurant_photos/<%= restaurant_photo.id %>" class="btn btn-primary">Show</a>
