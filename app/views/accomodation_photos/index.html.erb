@@ -17,7 +17,13 @@
 
       <% @accomodation_photos.each do |accomodation_photo| %>
       <tr>
-        <td><%= accomodation_photo.accommodation.name %></td>
+        <td>
+          <% if accomodation_photo.accommodation.present? %>
+            <a href="/accommodations/<%= accomodation_photo.accommodation.id %>">
+              <%= accomodation_photo.accommodation.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= accomodation_photo.user_id %></td>
         <td><%= accomodation_photo.caption %></td>
         <td>

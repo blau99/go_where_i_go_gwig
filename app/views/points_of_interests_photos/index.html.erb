@@ -17,7 +17,13 @@
 
       <% @points_of_interests_photos.each do |points_of_interests_photo| %>
       <tr>
-        <td><%= points_of_interests_photo.points_of_interests.name %></td>
+        <td>
+          <% if points_of_interests_photo.points_of_interests.present? %>
+            <a href="/points_of_interests/<%= points_of_interests_photo.points_of_interests.id %>">
+              <%= points_of_interests_photo.points_of_interests.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= points_of_interests_photo.user_id %></td>
         <td><%= points_of_interests_photo.caption %></td>
         <td>

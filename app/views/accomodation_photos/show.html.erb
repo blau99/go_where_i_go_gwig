@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Accommodation</dt>
-      <dd><%= @accomodation_photo.accommodation_id %></dd>
+      <dd>
+        <% if @accomodation_photo.accommodation.present? %>
+          <a href="/accommodations/<%= @accomodation_photo.accommodation_id %>">
+            <%= @accomodation_photo.accommodation.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>User</dt>
       <dd><%= @accomodation_photo.user_id %></dd>

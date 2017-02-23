@@ -16,8 +16,20 @@
 
       <% @accommodation_favorites.each do |accommodation_favorite| %>
       <tr>
-        <td><%= accommodation_favorite.accommodation.name %></td>
-        <td><%= accommodation_favorite.user.email %></td>
+        <td>
+          <% if accommodation_favorite.accommodation.present? %>
+            <a href="/accommodations/<%= accommodation_favorite.accommodation.id %>">
+              <%= accommodation_favorite.accommodation.name %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if accommodation_favorite.user.present? %>
+            <a href="/users/<%= accommodation_favorite.user.id %>">
+              <%= accommodation_favorite.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/accommodation_favorites/<%= accommodation_favorite.id %>" class="btn btn-primary">Show</a>
           
