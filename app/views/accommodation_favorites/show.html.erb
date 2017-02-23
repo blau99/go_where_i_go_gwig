@@ -17,12 +17,14 @@
       <a href="/accommodation_favorites" class="btn btn-primary">
         Back
       </a>
-      <a href="/accommodation_favorites/<%= @accommodation_favorite.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_accommodation_favorite/<%= @accommodation_favorite.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @accommodation_favorite.user %>
+        <a href="/accommodation_favorites/<%= @accommodation_favorite.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_accommodation_favorite/<%= @accommodation_favorite.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>

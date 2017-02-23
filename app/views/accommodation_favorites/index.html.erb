@@ -20,8 +20,11 @@
         <td><%= accommodation_favorite.user.email %></td>
         <td>
           <a href="/accommodation_favorites/<%= accommodation_favorite.id %>" class="btn btn-primary">Show</a>
-          <a href="/accommodation_favorites/<%= accommodation_favorite.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_accommodation_favorite/<%= accommodation_favorite.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == accommodation_favorite.user %>
+            <a href="/accommodation_favorites/<%= accommodation_favorite.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_accommodation_favorite/<%= accommodation_favorite.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

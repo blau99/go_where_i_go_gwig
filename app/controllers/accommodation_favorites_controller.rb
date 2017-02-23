@@ -1,4 +1,14 @@
 class AccommodationFavoritesController < ApplicationController
+  before_action :current_user_must_be_accommodation_favorite_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_accommodation_favorite_user
+    accommodation_favorite = AccommodationFavorite.find(params[:id])
+
+    unless current_user == accommodation_favorite.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @accommodation_favorites = AccommodationFavorite.all
 
