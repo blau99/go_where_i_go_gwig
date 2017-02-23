@@ -65,6 +65,38 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_accomodation_photo" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for accommodation_id -->
+      <input type="hidden" name="accommodation_id" value="<%= @accommodation.id %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for caption -->
+      <div class="form-group">
+        <label for="caption" class="control-label">
+          Caption
+        </label>
+
+        <textarea id="caption" name="caption" placeholder="Caption" class="form-control" rows="3"></textarea>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Accomodation Photo
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -96,6 +128,23 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_accommodation_favorite" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for accommodation_id -->
+      <input type="hidden" name="accommodation_id" value="<%= @accommodation.id %>">
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Accommodation Favorite
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

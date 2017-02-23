@@ -16,6 +16,8 @@ class AccommodationsController < ApplicationController
   end
 
   def show
+    @accommodation_favorite = AccommodationFavorite.new
+    @accomodation_photo = AccomodationPhoto.new
     @accommodation = Accommodation.find(params[:id])
 
     render("accommodations/show.html.erb")

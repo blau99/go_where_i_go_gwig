@@ -16,6 +16,8 @@ class PointsOfInterestsController < ApplicationController
   end
 
   def show
+    @points_of_interests_favorite = PointsOfInterestsFavorite.new
+    @points_of_interests_photo = PointsOfInterestsPhoto.new
     @points_of_interest = PointsOfInterest.find(params[:id])
 
     render("points_of_interests/show.html.erb")
