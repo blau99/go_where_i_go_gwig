@@ -24,7 +24,7 @@
           Accommodation
         </label>
 
-        <input type="text" id="accommodation_id" name="accommodation_id" placeholder="Accommodation" class="form-control" value="<%= @accomodation_photo.accommodation_id %>">
+        <%= select_tag(:accommodation_id, options_from_collection_for_select(Accommodation.all, :id, :name, @accomodation_photo.accommodation_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
