@@ -10,7 +10,7 @@ class PointsOfInterestsFavoritesController < ApplicationController
   end
 
   def index
-    @points_of_interests_favorites = PointsOfInterestsFavorite.all
+    @points_of_interests_favorites = PointsOfInterestsFavorite.page(params[:page]).per(10)
 
     render("points_of_interests_favorites/index.html.erb")
   end

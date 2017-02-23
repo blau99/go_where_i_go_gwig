@@ -10,7 +10,7 @@ class AccommodationFavoritesController < ApplicationController
   end
 
   def index
-    @accommodation_favorites = AccommodationFavorite.all
+    @accommodation_favorites = AccommodationFavorite.page(params[:page]).per(10)
 
     render("accommodation_favorites/index.html.erb")
   end

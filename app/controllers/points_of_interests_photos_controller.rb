@@ -1,6 +1,6 @@
 class PointsOfInterestsPhotosController < ApplicationController
   def index
-    @points_of_interests_photos = PointsOfInterestsPhoto.all
+    @points_of_interests_photos = PointsOfInterestsPhoto.page(params[:page]).per(10)
 
     render("points_of_interests_photos/index.html.erb")
   end

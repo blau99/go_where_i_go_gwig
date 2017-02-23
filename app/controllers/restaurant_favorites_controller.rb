@@ -10,7 +10,7 @@ class RestaurantFavoritesController < ApplicationController
   end
 
   def index
-    @restaurant_favorites = RestaurantFavorite.all
+    @restaurant_favorites = RestaurantFavorite.page(params[:page]).per(10)
 
     render("restaurant_favorites/index.html.erb")
   end

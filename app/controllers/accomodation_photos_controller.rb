@@ -1,6 +1,6 @@
 class AccomodationPhotosController < ApplicationController
   def index
-    @accomodation_photos = AccomodationPhoto.all
+    @accomodation_photos = AccomodationPhoto.page(params[:page]).per(10)
 
     render("accomodation_photos/index.html.erb")
   end
