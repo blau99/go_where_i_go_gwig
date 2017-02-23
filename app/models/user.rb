@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :restaurant_photos,
+             :dependent => :destroy
+
   has_many   :restaurant_favorites,
              :dependent => :destroy
 
