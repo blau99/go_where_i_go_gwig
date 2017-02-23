@@ -17,7 +17,7 @@
       <% @points_of_interests_favorites.each do |points_of_interests_favorite| %>
       <tr>
         <td><%= points_of_interests_favorite.points_of_interest.name %></td>
-        <td><%= points_of_interests_favorite.user_id %></td>
+        <td><%= points_of_interests_favorite.user.email %></td>
         <td>
           <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>" class="btn btn-primary">Show</a>
           <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>/edit" class="btn btn-warning">Edit</a>
