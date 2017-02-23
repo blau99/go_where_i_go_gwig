@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Points Of Interests Favorite #<%= @points_of_interests_favorite.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Points of interest</dt>
+      <dd><%= @points_of_interests_favorite.points_of_interest_id %></dd>
+
+      <dt>User</dt>
+      <dd><%= @points_of_interests_favorite.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/points_of_interests_favorites" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/points_of_interests_favorites/<%= @points_of_interests_favorite.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_points_of_interests_favorite/<%= @points_of_interests_favorite.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Points_of_interests_favorite resource:
+  # CREATE
+  get "/points_of_interests_favorites/new", :controller => "points_of_interests_favorites", :action => "new"
+  post "/create_points_of_interests_favorite", :controller => "points_of_interests_favorites", :action => "create"
+
+  # READ
+  get "/points_of_interests_favorites", :controller => "points_of_interests_favorites", :action => "index"
+  get "/points_of_interests_favorites/:id", :controller => "points_of_interests_favorites", :action => "show"
+
+  # UPDATE
+  get "/points_of_interests_favorites/:id/edit", :controller => "points_of_interests_favorites", :action => "edit"
+  post "/update_points_of_interests_favorite/:id", :controller => "points_of_interests_favorites", :action => "update"
+
+  # DELETE
+  get "/delete_points_of_interests_favorite/:id", :controller => "points_of_interests_favorites", :action => "destroy"
+  #------------------------------
+
   # Routes for the Accommodation_favorite resource:
   # CREATE
   get "/accommodation_favorites/new", :controller => "accommodation_favorites", :action => "new"

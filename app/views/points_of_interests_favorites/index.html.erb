@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Points of interests favorites
+    <a href="/points_of_interests_favorites/new" class="btn btn-lg btn-success">New Points of interests favorite</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Points of interest</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @points_of_interests_favorites.each do |points_of_interests_favorite| %>
+      <tr>
+        <td><%= points_of_interests_favorite.points_of_interest_id %></td>
+        <td><%= points_of_interests_favorite.user_id %></td>
+        <td>
+          <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>" class="btn btn-primary">Show</a>
+          <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_points_of_interests_favorite/<%= points_of_interests_favorite.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
