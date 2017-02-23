@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Accomodation_photo resource:
+  # CREATE
+  get "/accomodation_photos/new", :controller => "accomodation_photos", :action => "new"
+  post "/create_accomodation_photo", :controller => "accomodation_photos", :action => "create"
+
+  # READ
+  get "/accomodation_photos", :controller => "accomodation_photos", :action => "index"
+  get "/accomodation_photos/:id", :controller => "accomodation_photos", :action => "show"
+
+  # UPDATE
+  get "/accomodation_photos/:id/edit", :controller => "accomodation_photos", :action => "edit"
+  post "/update_accomodation_photo/:id", :controller => "accomodation_photos", :action => "update"
+
+  # DELETE
+  get "/delete_accomodation_photo/:id", :controller => "accomodation_photos", :action => "destroy"
+  #------------------------------
+
   # Routes for the Points_of_interests_photo resource:
   # CREATE
   get "/points_of_interests_photos/new", :controller => "points_of_interests_photos", :action => "new"
