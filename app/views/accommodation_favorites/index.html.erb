@@ -17,7 +17,7 @@
       <% @accommodation_favorites.each do |accommodation_favorite| %>
       <tr>
         <td><%= accommodation_favorite.accommodation.name %></td>
-        <td><%= accommodation_favorite.user_id %></td>
+        <td><%= accommodation_favorite.user.email %></td>
         <td>
           <a href="/accommodation_favorites/<%= accommodation_favorite.id %>" class="btn btn-primary">Show</a>
           <a href="/accommodation_favorites/<%= accommodation_favorite.id %>/edit" class="btn btn-warning">Edit</a>
