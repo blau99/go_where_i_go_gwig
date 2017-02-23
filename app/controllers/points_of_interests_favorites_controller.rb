@@ -10,7 +10,8 @@ class PointsOfInterestsFavoritesController < ApplicationController
   end
 
   def index
-    @points_of_interests_favorites = PointsOfInterestsFavorite.page(params[:page]).per(10)
+    @q = PointsOfInterestsFavorite.ransack(params[:q])
+    @points_of_interests_favorites = @q.result(:distinct => true).includes(:user, :points_of_interest).page(params[:page]).per(10)
 
     render("points_of_interests_favorites/index.html.erb")
   end

@@ -10,7 +10,8 @@ class RestaurantPhotosController < ApplicationController
   end
 
   def index
-    @restaurant_photos = RestaurantPhoto.page(params[:page]).per(10)
+    @q = RestaurantPhoto.ransack(params[:q])
+    @restaurant_photos = @q.result(:distinct => true).includes(:user, :restaurant).page(params[:page]).per(10)
 
     render("restaurant_photos/index.html.erb")
   end

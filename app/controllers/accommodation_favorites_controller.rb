@@ -10,7 +10,8 @@ class AccommodationFavoritesController < ApplicationController
   end
 
   def index
-    @accommodation_favorites = AccommodationFavorite.page(params[:page]).per(10)
+    @q = AccommodationFavorite.ransack(params[:q])
+    @accommodation_favorites = @q.result(:distinct => true).includes(:user, :accommodation).page(params[:page]).per(10)
 
     render("accommodation_favorites/index.html.erb")
   end

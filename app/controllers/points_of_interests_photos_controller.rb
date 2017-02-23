@@ -1,6 +1,7 @@
 class PointsOfInterestsPhotosController < ApplicationController
   def index
-    @points_of_interests_photos = PointsOfInterestsPhoto.page(params[:page]).per(10)
+    @q = PointsOfInterestsPhoto.ransack(params[:q])
+    @points_of_interests_photos = @q.result(:distinct => true).includes(:points_of_interests).page(params[:page]).per(10)
 
     render("points_of_interests_photos/index.html.erb")
   end

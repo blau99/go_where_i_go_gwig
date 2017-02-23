@@ -10,7 +10,8 @@ class RestaurantFavoritesController < ApplicationController
   end
 
   def index
-    @restaurant_favorites = RestaurantFavorite.page(params[:page]).per(10)
+    @q = RestaurantFavorite.ransack(params[:q])
+    @restaurant_favorites = @q.result(:distinct => true).includes(:user, :restaurant).page(params[:page]).per(10)
 
     render("restaurant_favorites/index.html.erb")
   end
