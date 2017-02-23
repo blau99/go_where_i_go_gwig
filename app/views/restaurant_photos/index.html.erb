@@ -17,7 +17,7 @@
 
       <% @restaurant_photos.each do |restaurant_photo| %>
       <tr>
-        <td><%= restaurant_photo.restaurant_id %></td>
+        <td><%= restaurant_photo.restaurant.name %></td>
         <td><%= restaurant_photo.user_id %></td>
         <td><%= restaurant_photo.caption %></td>
         <td>
