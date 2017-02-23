@@ -1,4 +1,6 @@
 class PointsOfInterest < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
   # Direct associations
 
   has_many   :points_of_interests_favorites,
