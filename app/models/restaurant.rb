@@ -22,10 +22,10 @@ class Restaurant < ApplicationRecord
 
   # Direct associations
 
-  has_many   :restaurant_favorites,
+  has_many   :photos,
              :dependent => :destroy
 
-  has_many   :restaurant_photos,
+  has_many   :favorites,
              :dependent => :destroy
 
   has_many   :best_dishes,

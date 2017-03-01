@@ -11,7 +11,7 @@ class PointsOfInterestsController < ApplicationController
 
   def index
     @q = PointsOfInterest.ransack(params[:q])
-    @points_of_interests = @q.result(:distinct => true).includes(:user, :points_of_interests_photos, :points_of_interests_favorites).page(params[:page]).per(10)
+    @points_of_interests = @q.result(:distinct => true).includes(:user, :favorites, :photos).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@points_of_interests.where.not(:address_latitude => nil)) do |points_of_interest, marker|
       marker.lat points_of_interest.address_latitude
       marker.lng points_of_interest.address_longitude
@@ -22,8 +22,8 @@ class PointsOfInterestsController < ApplicationController
   end
 
   def show
-    @points_of_interests_favorite = PointsOfInterestsFavorite.new
-    @points_of_interests_photo = PointsOfInterestsPhoto.new
+    @photo = Photo.new
+    @favorite = Favorite.new
     @points_of_interest = PointsOfInterest.find(params[:id])
 
     render("points_of_interests/show.html.erb")

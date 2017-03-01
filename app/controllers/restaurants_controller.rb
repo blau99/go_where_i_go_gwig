@@ -11,7 +11,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @q = Restaurant.ransack(params[:q])
-    @restaurants = @q.result(:distinct => true).includes(:user, :best_dishes, :restaurant_photos, :restaurant_favorites).page(params[:page]).per(10)
+    @restaurants = @q.result(:distinct => true).includes(:user, :best_dishes, :favorites, :photos).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@restaurants.where.not(:address_latitude => nil)) do |restaurant, marker|
       marker.lat restaurant.address_latitude
       marker.lng restaurant.address_longitude
@@ -22,8 +22,8 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant_favorite = RestaurantFavorite.new
-    @restaurant_photo = RestaurantPhoto.new
+    @photo = Photo.new
+    @favorite = Favorite.new
     @best_dish = BestDish.new
     @restaurant = Restaurant.find(params[:id])
 

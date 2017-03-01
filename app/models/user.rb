@@ -1,16 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
-  has_many   :accommodation_favorites,
+  has_many   :photos,
              :dependent => :destroy
 
-  has_many   :points_of_interests_favorites,
-             :dependent => :destroy
-
-  has_many   :restaurant_photos,
-             :dependent => :destroy
-
-  has_many   :restaurant_favorites,
+  has_many   :favorites,
              :dependent => :destroy
 
   has_many   :points_of_interests,

@@ -189,29 +189,29 @@
   </div>
 </div>
 
-<!-- A User has many restaurant_favorites -->
+<!-- A User has many favorites -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Restaurant Favorites
+        Favorites
       </li>
 
-      <% @user.restaurant_favorites.each do |restaurant_favorite| %>
+      <% @user.favorites.each do |favorite| %>
         <li class="list-group-item">
-          <a href="/restaurant_favorites/<%= restaurant_favorite.id %>">
-            <%= restaurant_favorite.restaurant_id %>
+          <a href="/favorites/<%= favorite.id %>">
+            <%= favorite.restaurant_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/restaurant_favorites/<%= restaurant_favorite.id %>" class="btn btn-primary">
+            <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == restaurant_favorite.user %>
-              <a href="/restaurant_favorites/<%= restaurant_favorite.id %>/edit" class="btn btn-warning">
+            <%if current_user == favorite.user %>
+              <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
                 <i class="fa fa-edit"></i>
               </a>
-              <a href="/delete_restaurant_favorite/<%= restaurant_favorite.id %>" class="btn btn-danger" rel="nofollow">
+              <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
             <% end %>
@@ -222,95 +222,29 @@
   </div>
 </div>
 
-<!-- A User has many restaurant_photos -->
+<!-- A User has many photos -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Restaurant Photos
+        Photos
       </li>
 
-      <% @user.restaurant_photos.each do |restaurant_photo| %>
+      <% @user.photos.each do |photo| %>
         <li class="list-group-item">
-          <a href="/restaurant_photos/<%= restaurant_photo.id %>">
-            <%= restaurant_photo.restaurant_id %>
+          <a href="/photos/<%= photo.id %>">
+            <%= photo.restaurant_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/restaurant_photos/<%= restaurant_photo.id %>" class="btn btn-primary">
+            <a href="/photos/<%= photo.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == restaurant_photo.user %>
-              <a href="/restaurant_photos/<%= restaurant_photo.id %>/edit" class="btn btn-warning">
+            <%if current_user == photo.user %>
+              <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">
                 <i class="fa fa-edit"></i>
               </a>
-              <a href="/delete_restaurant_photo/<%= restaurant_photo.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many points_of_interests_favorites -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Points Of Interests Favorites
-      </li>
-
-      <% @user.points_of_interests_favorites.each do |points_of_interests_favorite| %>
-        <li class="list-group-item">
-          <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>">
-            <%= points_of_interests_favorite.points_of_interest_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == points_of_interests_favorite.user %>
-              <a href="/points_of_interests_favorites/<%= points_of_interests_favorite.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_points_of_interests_favorite/<%= points_of_interests_favorite.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many accommodation_favorites -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Accommodation Favorites
-      </li>
-
-      <% @user.accommodation_favorites.each do |accommodation_favorite| %>
-        <li class="list-group-item">
-          <a href="/accommodation_favorites/<%= accommodation_favorite.id %>">
-            <%= accommodation_favorite.accommodation_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/accommodation_favorites/<%= accommodation_favorite.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == accommodation_favorite.user %>
-              <a href="/accommodation_favorites/<%= accommodation_favorite.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_accommodation_favorite/<%= accommodation_favorite.id %>" class="btn btn-danger" rel="nofollow">
+              <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
             <% end %>

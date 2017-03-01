@@ -48,28 +48,28 @@
   </div>
 </div>
 
-<!-- A Accommodation has many accomodation_photos -->
+<!-- A Accommodation has many favorites -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Accomodation Photos
+        Favorites
       </li>
 
-      <% @accommodation.accomodation_photos.each do |accomodation_photo| %>
+      <% @accommodation.favorites.each do |favorite| %>
         <li class="list-group-item">
-          <a href="/accomodation_photos/<%= accomodation_photo.id %>">
-            <%= accomodation_photo.accommodation_id %>
+          <a href="/favorites/<%= favorite.id %>">
+            <%= favorite.restaurant_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/accomodation_photos/<%= accomodation_photo.id %>" class="btn btn-primary">
+            <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/accomodation_photos/<%= accomodation_photo.id %>/edit" class="btn btn-warning">
+            <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_accomodation_photo/<%= accomodation_photo.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>
@@ -77,21 +77,99 @@
       <% end %>
 
       <li class="list-group-item">
-        <form action="/create_accomodation_photo" method="post">
+        <form action="/create_favorite" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for restaurant_id -->
+      <div class="form-group">
+        <label for="restaurant_id" class="control-label">
+          Restaurant
+        </label>
+
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for points_of_interest_id -->
+      <div class="form-group">
+        <label for="points_of_interest_id" class="control-label">
+          Points of interest
+        </label>
+
+        <%= select_tag(:points_of_interest_id, options_from_collection_for_select(PointsOfInterest.all, :id, :name), :class => "form-control") %>
+      </div>
 
       <!-- Label and input for accommodation_id -->
       <input type="hidden" name="accommodation_id" value="<%= @accommodation.id %>">
 
       <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Favorite
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Accommodation has many photos -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Photos
+      </li>
+
+      <% @accommodation.photos.each do |photo| %>
+        <li class="list-group-item">
+          <a href="/photos/<%= photo.id %>">
+            <%= photo.restaurant_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/photos/<%= photo.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_photo" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for restaurant_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
+        <label for="restaurant_id" class="control-label">
+          Restaurant
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="">
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name), :class => "form-control") %>
       </div>
+
+      <!-- Label and input for points_of_interest_id -->
+      <div class="form-group">
+        <label for="points_of_interest_id" class="control-label">
+          Points of interest
+        </label>
+
+        <%= select_tag(:points_of_interest_id, options_from_collection_for_select(PointsOfInterest.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for accommodation_id -->
+      <input type="hidden" name="accommodation_id" value="<%= @accommodation.id %>">
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <!-- Label and input for caption -->
       <div class="form-group">
@@ -103,55 +181,7 @@
       </div>
 
       <button class="btn btn-block btn-success">
-        Create Accomodation Photo
-      </button>
-    </form>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<!-- A Accommodation has many accommodation_favorites -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Accommodation Favorites
-      </li>
-
-      <% @accommodation.accommodation_favorites.each do |accommodation_favorite| %>
-        <li class="list-group-item">
-          <a href="/accommodation_favorites/<%= accommodation_favorite.id %>">
-            <%= accommodation_favorite.accommodation_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/accommodation_favorites/<%= accommodation_favorite.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/accommodation_favorites/<%= accommodation_favorite.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_accommodation_favorite/<%= accommodation_favorite.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_accommodation_favorite" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for accommodation_id -->
-      <input type="hidden" name="accommodation_id" value="<%= @accommodation.id %>">
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
-
-      <button class="btn btn-block btn-success">
-        Create Accommodation Favorite
+        Create Photo
       </button>
     </form>
       </li>
