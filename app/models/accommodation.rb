@@ -22,10 +22,10 @@ class Accommodation < ApplicationRecord
 
   # Direct associations
 
-  has_many   :accommodation_favorites,
+  has_many   :photos,
              :dependent => :destroy
 
-  has_many   :accomodation_photos,
+  has_many   :favorites,
              :dependent => :destroy
 
   belongs_to :user

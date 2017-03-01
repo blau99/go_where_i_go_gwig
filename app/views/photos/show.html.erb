@@ -1,0 +1,63 @@
+<div class="page-header">
+  <h3>Photo #<%= @photo.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Restaurant</dt>
+      <dd>
+        <% if @photo.restaurant.present? %>
+          <a href="/restaurants/<%= @photo.restaurant_id %>">
+            <%= @photo.restaurant.name %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Points of interest</dt>
+      <dd>
+        <% if @photo.points_of_interest.present? %>
+          <a href="/points_of_interests/<%= @photo.points_of_interest_id %>">
+            <%= @photo.points_of_interest.name %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Accommodation</dt>
+      <dd>
+        <% if @photo.accommodation.present? %>
+          <a href="/accommodations/<%= @photo.accommodation_id %>">
+            <%= @photo.accommodation.name %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>User</dt>
+      <dd>
+        <% if @photo.user.present? %>
+          <a href="/users/<%= @photo.user_id %>">
+            <%= @photo.user.email %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Caption</dt>
+      <dd><%= @photo.caption %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/photos" class="btn btn-primary">
+        Back
+      </a>
+      <% if current_user == @photo.user %>
+        <a href="/photos/<%= @photo.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_photo/<%= @photo.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

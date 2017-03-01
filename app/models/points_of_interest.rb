@@ -22,10 +22,10 @@ class PointsOfInterest < ApplicationRecord
 
   # Direct associations
 
-  has_many   :points_of_interests_favorites,
+  has_many   :photos,
              :dependent => :destroy
 
-  has_many   :points_of_interests_photos,
+  has_many   :favorites,
              :dependent => :destroy
 
   belongs_to :user

@@ -90,28 +90,28 @@
   </div>
 </div>
 
-<!-- A Restaurant has many restaurant_photos -->
+<!-- A Restaurant has many favorites -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Restaurant Photos
+        Favorites
       </li>
 
-      <% @restaurant.restaurant_photos.each do |restaurant_photo| %>
+      <% @restaurant.favorites.each do |favorite| %>
         <li class="list-group-item">
-          <a href="/restaurant_photos/<%= restaurant_photo.id %>">
-            <%= restaurant_photo.restaurant_id %>
+          <a href="/favorites/<%= favorite.id %>">
+            <%= favorite.restaurant_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/restaurant_photos/<%= restaurant_photo.id %>" class="btn btn-primary">
+            <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/restaurant_photos/<%= restaurant_photo.id %>/edit" class="btn btn-warning">
+            <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_restaurant_photo/<%= restaurant_photo.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>
@@ -119,12 +119,96 @@
       <% end %>
 
       <li class="list-group-item">
-        <form action="/create_restaurant_photo" method="post">
+        <form action="/create_favorite" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for restaurant_id -->
       <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>">
+
+      <!-- Label and input for points_of_interest_id -->
+      <div class="form-group">
+        <label for="points_of_interest_id" class="control-label">
+          Points of interest
+        </label>
+
+        <%= select_tag(:points_of_interest_id, options_from_collection_for_select(PointsOfInterest.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for accommodation_id -->
+      <div class="form-group">
+        <label for="accommodation_id" class="control-label">
+          Accommodation
+        </label>
+
+        <%= select_tag(:accommodation_id, options_from_collection_for_select(Accommodation.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Favorite
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Restaurant has many photos -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Photos
+      </li>
+
+      <% @restaurant.photos.each do |photo| %>
+        <li class="list-group-item">
+          <a href="/photos/<%= photo.id %>">
+            <%= photo.restaurant_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/photos/<%= photo.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_photo" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for restaurant_id -->
+      <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>">
+
+      <!-- Label and input for points_of_interest_id -->
+      <div class="form-group">
+        <label for="points_of_interest_id" class="control-label">
+          Points of interest
+        </label>
+
+        <%= select_tag(:points_of_interest_id, options_from_collection_for_select(PointsOfInterest.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for accommodation_id -->
+      <div class="form-group">
+        <label for="accommodation_id" class="control-label">
+          Accommodation
+        </label>
+
+        <%= select_tag(:accommodation_id, options_from_collection_for_select(Accommodation.all, :id, :name), :class => "form-control") %>
+      </div>
 
       <!-- Label and input for user_id -->
       <input type="hidden" name="user_id" value="<%= current_user.id %>">
@@ -139,55 +223,7 @@
       </div>
 
       <button class="btn btn-block btn-success">
-        Create Restaurant Photo
-      </button>
-    </form>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<!-- A Restaurant has many restaurant_favorites -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Restaurant Favorites
-      </li>
-
-      <% @restaurant.restaurant_favorites.each do |restaurant_favorite| %>
-        <li class="list-group-item">
-          <a href="/restaurant_favorites/<%= restaurant_favorite.id %>">
-            <%= restaurant_favorite.restaurant_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/restaurant_favorites/<%= restaurant_favorite.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/restaurant_favorites/<%= restaurant_favorite.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_restaurant_favorite/<%= restaurant_favorite.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_restaurant_favorite" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for restaurant_id -->
-      <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>">
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
-
-      <button class="btn btn-block btn-success">
-        Create Restaurant Favorite
+        Create Photo
       </button>
     </form>
       </li>
