@@ -13,5 +13,6 @@ class Photo < ApplicationRecord
   # Indirect associations
 
   # Validations
+  validates :user_id, presence: true
 
 end

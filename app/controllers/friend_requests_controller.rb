@@ -88,4 +88,8 @@ class FriendRequestsController < ApplicationController
       redirect_back(:fallback_location => "/", :notice => "Friend request deleted.")
     end
   end
+  
+  def post
+    render("friend_requests/post.html.erb")
+  end
 end
