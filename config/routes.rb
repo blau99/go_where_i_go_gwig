@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  
-  root :to => "friend_requests#post"
-  
+  root :to => "friend_requests#index"
   # Routes for the Photo resource:
   # CREATE
   get "/photos/new", :controller => "photos", :action => "new"
@@ -111,9 +109,6 @@ Rails.application.routes.draw do
   get "/friend_requests/new", :controller => "friend_requests", :action => "new"
   post "/create_friend_request", :controller => "friend_requests", :action => "create"
 
-  # POST
-  get "/friend_requests/post", :controller => "friend_requests", :action => "post"
-  
   # READ
   get "/friend_requests", :controller => "friend_requests", :action => "index"
   get "/friend_requests/:id", :controller => "friend_requests", :action => "show"
@@ -125,7 +120,7 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_friend_request/:id", :controller => "friend_requests", :action => "destroy"
   #------------------------------
-  
+
   devise_for :users
   # Routes for the User resource:
   # READ
